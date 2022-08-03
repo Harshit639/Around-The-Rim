@@ -3,5 +3,6 @@
     <array name="preloaded_fonts" translatable="false">
         <item>@font/aguafina_script</item>
         <item>@font/akaya_telivigala</item>
+        <item>@font/aladin</item>
     </array>
 </resources>

@@ -21,6 +21,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 
 import com.parse.FindCallback;
@@ -36,12 +37,24 @@ import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-public class userlist extends AppCompatActivity {
+public class userlist extends AppCompatActivity implements View.OnClickListener {
+
+    ImageView imageView;
+    ImageView back;
 
     public void getphoto(){
         Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         startActivityForResult(intent,1);
 
+    }
+    @Override
+    public void onClick(View view) {
+        if(view.getId()==R.id.addphotoback){
+            getphoto();
+        }else if(view.getId()==R.id.back){
+            Intent intent = new Intent(getApplicationContext(),feedtesting.class);
+            startActivity(intent);
+        }
     }
 
     @Override
@@ -84,37 +97,43 @@ public class userlist extends AppCompatActivity {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater menuInflater = getMenuInflater();
-        menuInflater.inflate(R.menu.share_menu,menu);
-
-        return super.onCreateOptionsMenu(menu);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if(item.getItemId()==R.id.share){
-            if(checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE)!= PackageManager.PERMISSION_GRANTED){
-                requestPermissions(new String[]{android.Manifest.permission.READ_EXTERNAL_STORAGE},1);
-            }else{
-                getphoto();
-            }
-        }else if(item.getItemId()==R.id.logout){
-            ParseUser.logOut();
-            Intent net = new Intent(getApplicationContext(), MainActivity.class);
-            startActivity(net);
-        }
-        return super.onOptionsItemSelected(item);
-    }
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        MenuInflater menuInflater = getMenuInflater();
+//        menuInflater.inflate(R.menu.share_menu,menu);
+//
+//        return super.onCreateOptionsMenu(menu);
+//    }
+//
+//    @Override
+//    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+//        if(item.getItemId()==R.id.share){
+//            if(checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE)!= PackageManager.PERMISSION_GRANTED){
+//                requestPermissions(new String[]{android.Manifest.permission.READ_EXTERNAL_STORAGE},1);
+//            }else{
+//                getphoto();
+//            }
+//        }else if(item.getItemId()==R.id.logout){
+//            ParseUser.logOut();
+//            Intent net = new Intent(getApplicationContext(), MainActivity.class);
+//            startActivity(net);
+//        }/*else if(item.getItemId()==R.id.photos){
+//            Intent net = new Intent(getApplicationContext(), feedtesting.class);
+//            startActivity(net);
+//        }*/
+//        return super.onOptionsItemSelected(item);
+//    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_userlist);
+        setContentView(R.layout.status_list);
 
-
+       imageView = findViewById(R.id.addphotoback);
+       back = findViewById(R.id.back);
+       back.setOnClickListener(this);
+       imageView.setOnClickListener(this);
         ListView list = findViewById(R.id.listview);
         ArrayList<NumbersView> usernames = new ArrayList<NumbersView>();
         NumbersViewAdapter arrayAdapter = new NumbersViewAdapter(this,usernames);
@@ -138,10 +157,11 @@ public class userlist extends AppCompatActivity {
                         }
                     }
                 });
+        Log.i("dcsdvdfvdfvdfvvfrvfr", String.valueOf(usernames.size()));
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent intent = new Intent(getApplicationContext(),MainActivity2.class);
+                Intent intent = new Intent(getApplicationContext(),userphotos.class);
                 intent.putExtra("username",(usernames.get(i).getNumberInDigit()));
                 startActivity(intent);
 
@@ -149,4 +169,6 @@ public class userlist extends AppCompatActivity {
         });
 
     }
+
+
 }

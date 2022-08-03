@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity implements View.OnKeyListene
     ImageView lol;
 
     public void function(){
-        Intent intent = new Intent(getApplicationContext(),userlist.class);
+        Intent intent = new Intent(getApplicationContext(),feedtesting.class);
         startActivity(intent);
     }
 
@@ -98,21 +98,27 @@ public class MainActivity extends AppCompatActivity implements View.OnKeyListene
                 });
 
             }else{
-                ParseUser user = new ParseUser();
-                user.setUsername(name.getText().toString());
-                user.setPassword(pass.getText().toString());
+                ParseUser.logOut();
+                Intent intent = new Intent(getApplicationContext(),verification.class);
+                intent.putExtra("username",name.getText().toString());
+                intent.putExtra("password",pass.getText().toString());
+                startActivity(intent);
 
-                user.signUpInBackground(new SignUpCallback() {
-                    @Override
-                    public void done(ParseException e) {
-                        if(e==null){
-                            Log.i("info", "success");
-                            function();
-                        }else{
-                            Toast.makeText(MainActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
+//                ParseUser user = new ParseUser();
+//                user.setUsername(name.getText().toString());
+//                user.setPassword(pass.getText().toString());
+//
+//                user.signUpInBackground(new SignUpCallback() {
+//                    @Override
+//                    public void done(ParseException e) {
+//                        if(e==null){
+//                            Log.i("info", "success");
+//                            function();
+//                        }else{
+//                            Toast.makeText(MainActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+//                        }
+//                    }
+//                });
             }
 
         }

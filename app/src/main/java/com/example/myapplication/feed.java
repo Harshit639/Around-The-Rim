@@ -1,8 +1,9 @@
 package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -17,27 +18,29 @@ import com.parse.ParseException;
 import com.parse.ParseFile;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
+import com.parse.ParseUser;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity2 extends AppCompatActivity {
+public class feed extends AppCompatActivity {
 
-    LinearLayout lin;
+    public RecyclerView recyclerView;
+    private ArrayList<proceed> arrayList;
+   // LinearLayout test;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_feed);  //yaha change kar dena
 
-        setContentView(R.layout.activity_main2);
-        Intent intent = getIntent();
-        String username = intent.getStringExtra("username");
-        Log.i("info",username);
-        setTitle(username+ " photos");
 
-        lin =findViewById(R.id.linlay);
+        arrayList = new ArrayList<>();
+        recyclerView = findViewById(R.id.Recycle);
+/*
 
         ParseQuery<ParseObject> query = new ParseQuery<ParseObject>("Image");
-        query.whereEqualTo("username",username);
+
         query.orderByDescending("createdAt");
         query.findInBackground(new FindCallback<ParseObject>() {
             @Override
@@ -53,12 +56,12 @@ public class MainActivity2 extends AppCompatActivity {
                                     Log.i("info","doing");
                                     Bitmap bitmap = BitmapFactory.decodeByteArray(data, 0, data.length);
                                     ImageView imageView = new ImageView(getApplicationContext());
-                                   imageView.setLayoutParams(new ViewGroup.LayoutParams(
+                                    imageView.setLayoutParams(new ViewGroup.LayoutParams(
                                             ViewGroup.LayoutParams.MATCH_PARENT,
                                             ViewGroup.LayoutParams.WRAP_CONTENT
                                     ));
                                     imageView.setImageBitmap(bitmap);
-                                    lin.addView(imageView);
+//                                    test.addView(imageView);
                                 }
                             }
                         });
@@ -67,6 +70,49 @@ public class MainActivity2 extends AppCompatActivity {
                 }
             }
         });
+      */  //testing
+
+        ParseQuery<ParseUser> query = ParseUser.getQuery();
+        query.whereNotEqualTo("username",ParseUser.getCurrentUser().getUsername());
+     //   query.whereNotEqualTo("username",ParseUser.getCurrentUser().getUsername());
+     //   query.addAscendingOrder("username");
+
+        query.findInBackground(new FindCallback<ParseUser>() {
+            @Override
+            public void done(List<ParseUser> objects, ParseException e) {
+                if(e==null){
+                    if(objects.size()>0){
+                        for (ParseUser user : objects){
+                            Log.i("dcds","try");
+                            Log.i("gfd",user.getUsername());
+                            arrayList.add(new proceed(user.getUsername(),R.drawable.fest));
+                            break;
+
+                        }
+                        }}
+                else{
+                    e.printStackTrace();
+                }
+            }
+        });
+
+
+
+
+
+
+
+        //test= findViewById(R.id.test);
+
+
+     arrayList.add(new proceed("scdsc",R.drawable.fest));
+      arrayList.add(new proceed("scdsc",R.drawable.fest));
+       RecycleAdapter recycleAdapter = new RecycleAdapter(arrayList);
+
+        recyclerView.setAdapter(recycleAdapter);
+       recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+
 
     }
 }

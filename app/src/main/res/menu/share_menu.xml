@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:title="chat" android:id="@+id/mssg"></item>
+    <item android:title="photos" android:id="@+id/photos"></item>
     <item android:title="Share" android:id="@+id/share"></item>
     <item android:title="Log Out" android:id="@+id/logout"/>
+
 
 </menu>

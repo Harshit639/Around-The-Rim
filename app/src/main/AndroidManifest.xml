@@ -12,23 +12,49 @@
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
+        android:label="Social"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".PersonalProfile"
+            android:exported="false" />
+        <activity
+            android:name=".chatactivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".chatlist"
+            android:exported="false" />
+        <activity
+            android:name=".userphotos"
+            android:exported="false" />
+        <activity
+            android:name=".verification"
+            android:exported="false" />
+        <activity
+            android:name=".feedtesting"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".feed"
+            android:exported="false"
+            android:label="Instagram" />
+        <activity
             android:name=".MainActivity2"
             android:exported="false" />
         <activity
             android:name=".userlist"
             android:exported="false"
-            android:label="Instagram" />
+            android:label="Social" />
         <activity
-            android:name=".MainActivity"
+            android:name=".MainActivity3"
             android:exported="true"
-            android:label="Instagram">
+            android:label="Social">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
