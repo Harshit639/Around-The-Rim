@@ -12,6 +12,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -25,12 +26,13 @@ import com.parse.SaveCallback;
 import java.util.ArrayList;
 import java.util.List;
 
-public class chatactivity extends AppCompatActivity {
+public class chatactivity extends AppCompatActivity implements View.OnClickListener  {
 
     ArrayAdapter arrayAdapter;
     String activeuser;
     ArrayList<String> messages = new ArrayList<>();
     Handler handler;
+    ImageView image;
 
     public void messageupdate(){
         ParseQuery<ParseObject> query1 = new ParseQuery<ParseObject>("message");
@@ -102,6 +104,9 @@ public class chatactivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chatactivity);
 
+        image=findViewById(R.id.back);
+        image.setOnClickListener(this);
+
 
 
         Intent intent = getIntent();
@@ -113,5 +118,13 @@ public class chatactivity extends AppCompatActivity {
         messageupdate();
 
 
+    }
+
+    @Override
+    public void onClick(View v) {
+        if(v.getId()==R.id.back){
+            Intent net = new Intent(getApplicationContext(), chatlist.class);
+            startActivity(net);
+        }
     }
 }
