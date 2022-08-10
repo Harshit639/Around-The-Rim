@@ -9,22 +9,23 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:background="#FAF9F6"
-        android:padding="14dp">
+        android:background="#ffcb5d"
+        android:padding="9dp">
 
         <ImageView
-            android:layout_width="53dp"
-            android:layout_height="26dp"
-            android:layout_centerVertical="true"
-            android:src="@drawable/home"
+            android:layout_width="64dp"
+            android:layout_height="38dp"
+            android:src="@drawable/tesr"
+            android:id="@+id/website"
+
             android:textSize="20sp" />
 
         <ImageView
+            android:id="@+id/self"
             android:layout_width="54dp"
             android:layout_height="31dp"
             android:layout_centerVertical="true"
             android:layout_toLeftOf="@+id/userlist"
-            android:id="@+id/self"
             android:src="@drawable/heart" />
 
         <ImageView

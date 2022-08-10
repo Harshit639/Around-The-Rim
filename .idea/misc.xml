@@ -4,28 +4,36 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.229" />
+        <entry key="app/src/main/res/drawable/circle.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/img.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/loginborder.xml" value="0.262" />
         <entry key="app/src/main/res/drawable/textinputborder.xml" value="0.2985" />
         <entry key="app/src/main/res/font/aladin.xml" value="0.23703703703703705" />
         <entry key="app/src/main/res/layout/activity_chatactivity.xml" value="0.184259033203125" />
         <entry key="app/src/main/res/layout/activity_chatlist.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_feed.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_feedtesting.xml" value="0.22111816406249998" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.25292510986328137" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.1693206787109375" />
         <entry key="app/src/main/res/layout/activity_main2.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_main3.xml" value="0.15070921985815602" />
-        <entry key="app/src/main/res/layout/activity_personal_profile.xml" value="0.24985351562500002" />
-        <entry key="app/src/main/res/layout/activity_userlist.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_ontopage.xml" value="0.1714691162109375" />
+        <entry key="app/src/main/res/layout/activity_personal_profile.xml" value="0.14933013916015625" />
+        <entry key="app/src/main/res/layout/activity_phototest.xml" value="0.1286727456940223" />
+        <entry key="app/src/main/res/layout/activity_sign_up.xml" value="0.22554347826086957" />
+        <entry key="app/src/main/res/layout/activity_userlist.xml" value="0.26401977539062504" />
         <entry key="app/src/main/res/layout/activity_userphotos.xml" value="0.14311043566362716" />
         <entry key="app/src/main/res/layout/activity_verification.xml" value="0.18157995050603692" />
+        <entry key="app/src/main/res/layout/activity_website.xml" value="0.21133270263671877" />
         <entry key="app/src/main/res/layout/bottomtoolbar.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/custom_list_view.xml" value="0.19610507246376813" />
-        <entry key="app/src/main/res/layout/custom_view.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/custom_list_view.xml" value="0.2549224853515625" />
+        <entry key="app/src/main/res/layout/custom_view.xml" value="0.24033660888671876" />
         <entry key="app/src/main/res/layout/feeditem.xml" value="0.1" />
         <entry key="app/src/main/res/layout/item.xml" value="0.182518115942029" />
+        <entry key="app/src/main/res/layout/ontopage.xml" value="0.1933876811594203" />
         <entry key="app/src/main/res/layout/status_list.xml" value="0.22620391845703128" />
         <entry key="app/src/main/res/layout/statusbar.xml" value="0.17614149010699728" />
         <entry key="app/src/main/res/layout/test.xml" value="0.13677811550151975" />
-        <entry key="app/src/main/res/layout/toolbar.xml" value="0.18660287081339713" />
+        <entry key="app/src/main/res/layout/toolbar.xml" value="0.32522744356730343" />
         <entry key="app/src/main/res/layout/userphotositem.xml" value="0.12487335359675786" />
         <entry key="app/src/main/res/layout/userrrlist.xml" value="0.1585144927536232" />
         <entry key="app/src/main/res/menu/share_menu.xml" value="0.23333333333333334" />

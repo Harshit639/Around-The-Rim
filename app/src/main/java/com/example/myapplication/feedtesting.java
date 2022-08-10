@@ -5,7 +5,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
+import java.util.Random;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -49,6 +49,8 @@ public class feedtesting extends AppCompatActivity implements View.OnClickListen
     ImageView users;
     ImageView send;
     ImageView self;
+    ImageView website;
+
 
     public void getphoto(){
         Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
@@ -66,6 +68,7 @@ public class feedtesting extends AppCompatActivity implements View.OnClickListen
                 byte[] bytearray = stream.toByteArray();
                 ParseFile file = new ParseFile("image.png",bytearray);
                 ParseObject object = new ParseObject("Image");
+                object.put("bitmap",String.valueOf(bitmap));
                 object.put("image",file);
                 object.put("username",ParseUser.getCurrentUser().getUsername());
                 object.saveInBackground(new SaveCallback() {
@@ -98,6 +101,9 @@ public class feedtesting extends AppCompatActivity implements View.OnClickListen
             startActivity(net);
         } else if (v.getId() == R.id.self) {
             Intent net = new Intent(getApplicationContext(), PersonalProfile.class);
+            startActivity(net);
+        }else if(v.getId()==R.id.website){
+            Intent net= new Intent(getApplicationContext(),Website.class);
             startActivity(net);
         }
     }
@@ -147,6 +153,8 @@ public class feedtesting extends AppCompatActivity implements View.OnClickListen
         users = findViewById(R.id.userlist);
         send=   findViewById(R.id.sendwe);
         self=findViewById(R.id.self);
+        website=findViewById(R.id.website);
+        website.setOnClickListener(this);
         users.setOnClickListener(this);
         addphoto.setOnClickListener(this);
         send.setOnClickListener(this);
@@ -157,44 +165,102 @@ public class feedtesting extends AppCompatActivity implements View.OnClickListen
     private void initdata() {
         list = new ArrayList<modelclass>();
 
-        ParseQuery<ParseObject> query = new ParseQuery<ParseObject>("Image");
-        query.whereNotEqualTo("username",ParseUser.getCurrentUser().getUsername());
-        query.orderByDescending("createdAt");
-        query.findInBackground(new FindCallback<ParseObject>() {
-            @Override
-            public void done(List<ParseObject> objects, ParseException e) {
-                if( e==null){
-                    if(objects.size()>0){
-                    for(ParseObject object : objects){
+        ParseQuery<ParseUser> queryl = ParseUser.getQuery();
+        queryl.whereNotEqualTo("username", ParseUser.getCurrentUser().getUsername());
+        queryl.findInBackground(new FindCallback<ParseUser>() {
+            public void done(List<ParseUser> objects, ParseException e) {
+                if (e == null) {
+                    for(ParseUser object : objects){
+                    ParseQuery<ParseObject> query = new ParseQuery<ParseObject>("Image");
+                  //  ParseQuery<ParseObject> query2 = new ParseQuery<ParseObject>("ProfileImage");
+                 //   query2.whereEqualTo("username",object.getUsername());
 
-                        String name = object.getString("username");
-                        ParseFile file = (ParseFile) object.get("image");
-                        file.getDataInBackground(new GetDataCallback() {
-                            @Override
-                            public void done(byte[] data, ParseException e) {
-                                if(e==null && data!=null) {
-                                    Log.i("info","doing");
-                                    Bitmap bitmap = BitmapFactory.decodeByteArray(data, 0, data.length);
-                                    Bitmap b = Bitmap.createScaledBitmap(bitmap, 360,428, true);
-                                    ImageView imageView = new ImageView(getApplicationContext());
-                                    imageView.setLayoutParams(new ViewGroup.LayoutParams(
-                                            ViewGroup.LayoutParams.MATCH_PARENT,
-                                            ViewGroup.LayoutParams.WRAP_CONTENT
-                                    ));
-                                    imageView.setImageBitmap(bitmap);
-                                    list.add(new modelclass(name,b));
+                    query.whereEqualTo("username",object.getUsername());
+                    query.orderByDescending("createdAt");
+                    query.findInBackground(new FindCallback<ParseObject>() {
+                        @Override
+                        public void done(List<ParseObject> objects, ParseException e) {
+                            if( e==null){
+                                if(objects.size()>0){
+                                    for(ParseObject object : objects){
+
+                                        String name = object.getString("username");
+                                        String likes = object.getString("likes");
+                                        ParseFile file = (ParseFile) object.get("image");
+                                        file.getDataInBackground(new GetDataCallback() {
+                                            @Override
+                                            public void done(byte[] data, ParseException e) {
+                                                if(e==null && data!=null) {
+                                                    Log.i("info","doing");
+                                                    Bitmap bitmap = BitmapFactory.decodeByteArray(data, 0, data.length);
+                                                    Bitmap b = Bitmap.createScaledBitmap(bitmap, 360,428, true);
+                                                    ImageView imageView = new ImageView(getApplicationContext());
+                                                    imageView.setLayoutParams(new ViewGroup.LayoutParams(
+                                                            ViewGroup.LayoutParams.MATCH_PARENT,
+                                                            ViewGroup.LayoutParams.WRAP_CONTENT
+                                                    ));
+                                                    imageView.setImageBitmap(bitmap);
+
+                                                    list.add(new modelclass(name,b,R.drawable.heart,likes));
 //                                    test.addView(imageView);
+                                                }
+                                                recyclerView.setAdapter(adap);
+                                            }
+                                        });
+                                        Log.i("infoSCDS",String.valueOf(list.size()));
+break;
+                                    }
+
                                 }
-                                recyclerView.setAdapter(adap);
                             }
-                        });
-                        Log.i("infoSCDS",String.valueOf(list.size()));
-
-                    }
-
+                        }});
+                } } else {
+                    // Something went wrong.
                 }
             }
-        }});
+        });
+
+//        ParseQuery<ParseObject> query = new ParseQuery<ParseObject>("Image");
+//
+//        query.whereNotEqualTo("username",ParseUser.getCurrentUser().getUsername());
+//        query.orderByDescending("createdAt");
+//        query.findInBackground(new FindCallback<ParseObject>() {
+//            @Override
+//            public void done(List<ParseObject> objects, ParseException e) {
+//                if( e==null){
+//                    if(objects.size()>0){
+//                    for(ParseObject object : objects){
+//
+//                        String name = object.getString("username");
+//                        String likes = object.getString("likes");
+//                        ParseFile file = (ParseFile) object.get("image");
+//                        file.getDataInBackground(new GetDataCallback() {
+//                            @Override
+//                            public void done(byte[] data, ParseException e) {
+//                                if(e==null && data!=null) {
+//                                    Log.i("info","doing");
+//                                    Bitmap bitmap = BitmapFactory.decodeByteArray(data, 0, data.length);
+//                                    Bitmap b = Bitmap.createScaledBitmap(bitmap, 360,428, true);
+//                                    ImageView imageView = new ImageView(getApplicationContext());
+//                                    imageView.setLayoutParams(new ViewGroup.LayoutParams(
+//                                            ViewGroup.LayoutParams.MATCH_PARENT,
+//                                            ViewGroup.LayoutParams.WRAP_CONTENT
+//                                    ));
+//                                    imageView.setImageBitmap(bitmap);
+//
+//                                    list.add(new modelclass(name,b,R.drawable.heart,likes));
+////                                    test.addView(imageView);
+//                                }
+//                                recyclerView.setAdapter(adap);
+//                            }
+//                        });
+//                        Log.i("infoSCDS",String.valueOf(list.size()));
+//
+//                    }
+//
+//                }
+//            }
+//        }});
 
 
 
@@ -277,6 +343,10 @@ public class feedtesting extends AppCompatActivity implements View.OnClickListen
         adap = new adapter(list);
 
         adap.notifyDataSetChanged();
+    }
+
+    public void likes(){
+
     }
 
 }

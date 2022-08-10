@@ -1,15 +1,17 @@
 package com.example.myapplication;
 
+import android.graphics.Bitmap;
+
 public class NumbersView {
-    private int ivNumbersImageId;
+    private Bitmap ivNumbersImageId;
     private String mNumberInDigit;
-    public NumbersView(int NumbersImageId, String NumbersInDigit) {
+    public NumbersView(Bitmap NumbersImageId, String NumbersInDigit) {
         ivNumbersImageId = NumbersImageId;
         mNumberInDigit = NumbersInDigit;
 
     }
 
-    public int getNumbersImageId() {
+    public Bitmap getNumbersImageId() {
         return ivNumbersImageId;
     }
 

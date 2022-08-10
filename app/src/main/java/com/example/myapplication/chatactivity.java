@@ -123,8 +123,7 @@ public class chatactivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
         if(v.getId()==R.id.back){
-            Intent net = new Intent(getApplicationContext(), chatlist.class);
-            startActivity(net);
+            finish();
         }
     }
 }

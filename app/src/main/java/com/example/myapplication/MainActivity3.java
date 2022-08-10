@@ -21,7 +21,7 @@ public class MainActivity3 extends AppCompatActivity {
             handler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    Intent intent=new Intent(MainActivity3.this,MainActivity.class);
+                    Intent intent=new Intent(getApplicationContext(),ontopage.class);
                     startActivity(intent);
                     finish();
                 }

@@ -65,6 +65,9 @@ public class userphotos extends AppCompatActivity {
                         });
 
                     }
+                }else{
+                    Intent net = new Intent(getApplicationContext(),phototest.class);
+                    startActivity(net);
                 }
             }
         });

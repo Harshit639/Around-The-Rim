@@ -10,6 +10,7 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -25,6 +26,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 
 import com.parse.FindCallback;
+import com.parse.GetDataCallback;
 import com.parse.ParseException;
 import com.parse.ParseFile;
 import com.parse.ParseObject;
@@ -39,8 +41,8 @@ import java.util.List;
 
 public class userlist extends AppCompatActivity implements View.OnClickListener {
 
-    ImageView imageView;
-    ImageView back;
+  //  ImageView imageView;
+   // ImageView back;
 
     public void getphoto(){
         Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
@@ -130,13 +132,15 @@ public class userlist extends AppCompatActivity implements View.OnClickListener 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.status_list);
 
-       imageView = findViewById(R.id.addphotoback);
-       back = findViewById(R.id.back);
-       back.setOnClickListener(this);
-       imageView.setOnClickListener(this);
+   //    imageView = findViewById(R.id.addphotoback);
+    //   back = findViewById(R.id.back);
+//       back.setOnClickListener(this);
+     //  imageView.setOnClickListener(this);
         ListView list = findViewById(R.id.listview);
         ArrayList<NumbersView> usernames = new ArrayList<NumbersView>();
         NumbersViewAdapter arrayAdapter = new NumbersViewAdapter(this,usernames);
+        Bitmap largeIcon = BitmapFactory.decodeResource(getResources(), R.drawable.asd);
+
 
         ParseQuery<ParseUser> query = ParseUser.getQuery();
         query.whereNotEqualTo("username",ParseUser.getCurrentUser().getUsername());
@@ -148,10 +152,43 @@ public class userlist extends AppCompatActivity implements View.OnClickListener 
                 if(e==null){
                     if(objects.size()>0){
                         for (ParseUser user : objects){
-                            usernames.add(new NumbersView(R.drawable.img_2,user.getUsername()));
+                            ParseQuery<ParseObject> query2 = new ParseQuery<ParseObject>("ProfileImage");
+                            query2.whereEqualTo("username",user.getUsername());
+
+                            query2.findInBackground(new FindCallback<ParseObject>() {
+                                @Override
+                                public void done(List<ParseObject> objects, ParseException e) {
+
+                                    if( e==null){
+                                        if(objects.size()>0){
+                                            Log.i("ifo", String.valueOf(objects.size()));
+                                            for(ParseObject object : objects){
+                                                ParseFile file = (ParseFile) object.get("image");
+                                                file.getDataInBackground(new GetDataCallback() {
+                                                    @Override
+                                                    public void done(byte[] data, ParseException e) {
+                                                        if(e==null && data!=null) {
+                                                            Log.i("info","doing");
+                                                            Bitmap bitmap = BitmapFactory.decodeByteArray(data, 0, data.length);
+                                                            Bitmap b = Bitmap.createScaledBitmap(bitmap, 360,428, true);
+                                                            usernames.add(new NumbersView(b,user.getUsername()));
+                                                        }
+                                                        list.setAdapter(arrayAdapter);
+                                                    }
+                                                });
+
+                                                break;
+                                            }
+                                        }else{
+                                            //  holder.setData(text,resource,heart, likes[0]+" likes",resource);
+                                            usernames.add(new NumbersView(largeIcon,user.getUsername()));
+                                        }list.setAdapter(arrayAdapter);
+                                    }
+                                }});
+                          //  usernames.add(new NumbersView(R.drawable.img_2,user.getUsername()));
 
                         }
-                        list.setAdapter(arrayAdapter);}}
+                        }}
                     else{
                             e.printStackTrace();
                         }
@@ -161,9 +198,24 @@ public class userlist extends AppCompatActivity implements View.OnClickListener 
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent intent = new Intent(getApplicationContext(),userphotos.class);
-                intent.putExtra("username",(usernames.get(i).getNumberInDigit()));
-                startActivity(intent);
+
+                ParseQuery<ParseObject> query = new ParseQuery<ParseObject>("Image");
+                query.whereEqualTo("username", usernames.get(i).getNumberInDigit());
+                query.orderByDescending("createdAt");
+                query.findInBackground(new FindCallback<ParseObject>() {
+                    @Override
+                    public void done(List<ParseObject> objects, ParseException e) {
+                        if(objects.size()==0){
+                            Intent net = new Intent(getApplicationContext(),phototest.class);
+                            startActivity(net);
+                        }else{
+                            Intent intent = new Intent(getApplicationContext(),userphotos.class);
+                            intent.putExtra("username",(usernames.get(i).getNumberInDigit()));
+                            startActivity(intent);
+                        }
+                    }
+                });
+
 
             }
         });

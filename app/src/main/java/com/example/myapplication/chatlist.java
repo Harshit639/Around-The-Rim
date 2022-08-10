@@ -204,8 +204,9 @@ import java.util.List;
                  Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                  startActivityForResult(intent,1);
              }else if(v.getId()==R.id.back){
-                 Intent intent = new Intent(getApplicationContext(),feedtesting.class);
-                 startActivity(intent);
+                 finish();
+                // Intent intent = new Intent(getApplicationContext(),feedtesting.class);
+               //  startActivity(intent);
              }
 
      }

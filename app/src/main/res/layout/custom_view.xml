@@ -25,7 +25,7 @@
             android:layout_height="match_parent"
             >
 
-            <ImageView
+            <com.mikhaellopez.circularimageview.CircularImageView
                 android:id="@+id/imageView15"
                 android:layout_width="98dp"
                 android:layout_height="68dp"

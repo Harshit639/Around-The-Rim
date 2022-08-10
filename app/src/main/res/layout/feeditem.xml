@@ -5,21 +5,49 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <!--    <TextView-->
+    <!--        android:id="@+id/textView20"-->
+    <!--        android:layout_width="118dp"-->
+    <!--        android:layout_height="24dp"-->
+    <!--        android:layout_marginStart="20dp"-->
+    <!--        android:layout_marginTop="40dp"-->
+    <!--        android:text="TextView"-->
+    <!--        android:textColor="@color/black"-->
+    <!--        android:textSize="20dp"-->
+    <!--        app:layout_constraintStart_toEndOf="@+id/imageView8"-->
+    <!--        app:layout_constraintTop_toTopOf="parent" />-->
+
+    <!--    <ImageView-->
+    <!--        android:id="@+id/imageView8"-->
+    <!--        android:layout_width="74dp"-->
+    <!--        android:layout_height="67dp"-->
+    <!--        android:layout_marginStart="16dp"-->
+    <!--        android:layout_marginTop="26dp"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toTopOf="parent"-->
+    <!--        app:srcCompat="@drawable/asd" />-->
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
         android:background="@color/white"
+        android:backgroundTint="@color/cardview_shadow_end_color"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="25dp">
+        app:layout_constraintTop_toTopOf="parent">
 
-        <ImageView
+        <com.mikhaellopez.circularimageview.CircularImageView
             android:id="@+id/imageView8"
-            android:layout_width="74dp"
-            android:layout_height="64dp"
+            android:layout_width="71dp"
+            android:layout_height="54dp"
             android:layout_centerVertical="true"
-            android:src="@drawable/asd"></ImageView>
+            android:layout_marginLeft="10dp"
+            android:scaleType="centerInside"
+            android:src="@drawable/asd"
+
+            />
 
         <TextView
             android:id="@+id/textView20"
@@ -27,22 +55,11 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_toRightOf="@+id/imageView8"
+            android:fontFamily="@font/margarine"
             android:text="TextView"
             android:textColor="@color/cardview_dark_background"
             android:textSize="20dp"></TextView>
     </RelativeLayout>
-
-<!--    <TextView-->
-<!--        android:id="@+id/textView20"-->
-<!--        android:layout_width="118dp"-->
-<!--        android:layout_height="24dp"-->
-<!--        android:layout_marginStart="20dp"-->
-<!--        android:layout_marginTop="40dp"-->
-<!--        android:text="TextView"-->
-<!--        android:textColor="@color/black"-->
-<!--        android:textSize="20dp"-->
-<!--        app:layout_constraintStart_toEndOf="@+id/imageView8"-->
-<!--        app:layout_constraintTop_toTopOf="parent" />-->
 
     <ImageView
         android:id="@+id/imageView7"
@@ -53,17 +70,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.462"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-<!--    <ImageView-->
-<!--        android:id="@+id/imageView8"-->
-<!--        android:layout_width="74dp"-->
-<!--        android:layout_height="67dp"-->
-<!--        android:layout_marginStart="16dp"-->
-<!--        android:layout_marginTop="26dp"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent"-->
-<!--        app:srcCompat="@drawable/asd" />-->
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.389" />
 
     <ImageView
         android:id="@+id/imageView11"
@@ -72,11 +80,10 @@
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.032"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.931"
-        app:srcCompat="@drawable/heart" />
+        app:layout_constraintVertical_bias="0.885" />
 
     <ImageView
         android:id="@+id/imageView12"
@@ -85,10 +92,10 @@
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.198"
+        app:layout_constraintHorizontal_bias="0.196"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.925"
+        app:layout_constraintVertical_bias="0.88"
         app:srcCompat="@drawable/send" />
 
     <ImageView
@@ -97,11 +104,26 @@
         android:layout_height="29dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.923"
+        app:layout_constraintHorizontal_bias="0.929"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.926"
+        app:layout_constraintVertical_bias="0.877"
         app:srcCompat="@drawable/save" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="71dp"
+        android:layout_height="31dp"
+        android:fontFamily="@font/margarine"
+        android:text="TextView"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.047"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.934" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

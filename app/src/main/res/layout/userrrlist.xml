@@ -26,16 +26,16 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.816" >
 
-        <TextView
-            android:id="@+id/textView6"
+<!--        <TextView-->
+<!--            android:id="@+id/textView6"-->
 
-            android:layout_width="133dp"
-            android:layout_height="60dp"
-            android:fontFamily="@font/black_and_white_picture"
-            android:text="Status"
-            android:textColor="@color/black"
-            android:textColorHint="@color/black"
-            android:textSize="45dp"/>
+<!--            android:layout_width="133dp"-->
+<!--            android:layout_height="60dp"-->
+<!--            android:fontFamily="@font/black_and_white_picture"-->
+<!--            android:text="Status"-->
+<!--            android:textColor="@color/black"-->
+<!--            android:textColorHint="@color/black"-->
+<!--            android:textSize="45dp"/>-->
     </ListView>
 
     <TextView

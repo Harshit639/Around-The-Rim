@@ -1,18 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="68dp"
     android:orientation="horizontal"
     tools:ignore="UselessParent">
 
-    <ImageView
+    <com.mikhaellopez.circularimageview.CircularImageView
         android:id="@+id/imageView"
-        android:layout_width="84dp"
-        android:layout_height="84dp"
-        android:padding="16dp"
-        tools:ignore="ContentDescription" />
+        android:layout_width="67dp"
+        android:layout_height="53dp"
+        android:layout_marginTop="7dp"
+
+        app:civ_border_color="#ffdf64"
+        tools:ignore="ContentDescription"
+        tools:srcCompat="@drawable/asd" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -24,13 +28,13 @@
             android:id="@+id/textView1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="0dp"
             android:gravity="bottom|left"
+            android:paddingLeft="10dp"
             android:textColor="@android:color/black"
             android:textSize="18sp"
             android:textStyle="bold"
             tools:ignore="RtlHardcoded" />
-
 
 
     </LinearLayout>

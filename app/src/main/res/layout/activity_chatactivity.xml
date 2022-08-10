@@ -13,36 +13,46 @@
 
     <ListView
         android:id="@+id/chatarea"
-        android:layout_width="392dp"
-        android:layout_height="590dp"
+        android:layout_width="374dp"
+        android:layout_height="519dp"
         android:layout_below="@id/bar"
         android:layout_marginStart="1dp"
-        android:layout_marginTop="1dp"
+        android:layout_marginTop="-1dp"
         android:layout_marginEnd="1dp"
         android:layout_marginBottom="1dp"
         android:stackFromBottom="true"
+        android:layout_above="@+id/chattext"
         android:transcriptMode="alwaysScroll" />
 
     <EditText
         android:id="@+id/chattext"
-        android:layout_width="282dp"
+        android:layout_width="263dp"
         android:layout_height="wrap_content"
-        android:layout_below="@id/chatarea"
-        android:layout_marginTop="8dp"
-        android:ems="10"
+        android:layout_alignParentBottom="true"
 
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="13dp"
+        android:layout_marginBottom="1dp"
+
+        android:background="@drawable/textinputborder"
+        android:ems="10"
         android:hint="Type"
         android:inputType="textPersonName"
-        android:minHeight="48dp" />
+        android:minHeight="48dp"
+        android:paddingStart="5dp" />
 
     <Button
         android:id="@+id/chatsend"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/chatarea"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="5dp"
+        android:layout_width="115dp"
+        android:layout_height="55dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="2dp"
+
+        android:layout_marginTop="6dp"
+        android:layout_marginBottom="0dp"
+
         android:layout_toRightOf="@+id/chattext"
+        android:backgroundTint="#f05123"
         android:onClick="sendchat"
         android:text="Send" />
 

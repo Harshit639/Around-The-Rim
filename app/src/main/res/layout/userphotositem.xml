@@ -4,20 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/fest">
+    android:background="@drawable/ku">
 
     <ImageView
         android:id="@+id/imageView17"
-        android:layout_width="370dp"
-        android:layout_height="483dp"
+        android:layout_width="286dp"
+        android:layout_height="329dp"
         android:layout_marginStart="48dp"
-        android:layout_marginTop="156dp"
+        android:layout_marginTop="208dp"
         android:layout_marginEnd="48dp"
-        android:layout_marginBottom="156dp"
+        android:layout_marginBottom="122dp"
         android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.533"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/best" />

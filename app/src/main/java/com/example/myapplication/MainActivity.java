@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity implements View.OnKeyListene
 
     @Override
     public void onClick(View view) {
-        if(view.getId()==R.id.imageView2 || view.getId()==R.id.imageView4){
+        if( view.getId()==R.id.imageView4){
             InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
             inputMethodManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),0);
 
@@ -64,27 +64,27 @@ public class MainActivity extends AppCompatActivity implements View.OnKeyListene
         return false;
     }
 
-    public void onclickx(View view) {
-        if (view.getId() == R.id.button2) {
-
-            if (sl) {
-                log.setText("Sign Up");
-                sign.setText("Log In");
-                sl = false;
-            } else {
-                log.setText("Log In");
-                sign.setText("Don't have a account? Sign Up");
-                sl = true;
-            }
-        }
-    }
+//    public void onclickx(View view) {
+//        if (view.getId() == R.id.button2) {
+//
+//            if (sl) {
+//                log.setText("Sign Up");
+//                sign.setText("Log In");
+//                sl = false;
+//            } else {
+//                log.setText("Log In");
+//                sign.setText("Don't have a account? Sign Up");
+//                sl = true;
+//            }
+//        }
+//    }
 
 
     public void slogin(View view) {
         if (name.getText().toString().matches("") || pass.getText().toString().matches("")) {
             Toast.makeText(this, "A username and password required", Toast.LENGTH_SHORT).show();
         } else {
-            if (sl) {
+            if (1==1) {
                 ParseUser.logInInBackground(name.getText().toString(), pass.getText().toString(), new LogInCallback() {
                     @Override
                     public void done(ParseUser user, ParseException e) {
@@ -132,11 +132,11 @@ public class MainActivity extends AppCompatActivity implements View.OnKeyListene
         name= findViewById(R.id.username);
         pass=findViewById(R.id.password);
         log=findViewById(R.id.button);
-        sign=findViewById(R.id.button2);
-        back=findViewById(R.id.imageView2);
-        lol=findViewById(R.id.imageView2);
-        back.setOnClickListener(this);
-        lol.setOnClickListener(this);
+     //   sign=findViewById(R.id.button2);
+       // back=findViewById(R.id.imageView2);
+     //   lol=findViewById(R.id.imageView2);
+    //    back.setOnClickListener(this);
+    //    lol.setOnClickListener(this);
         pass.setOnKeyListener(this);
 
         if(ParseUser.getCurrentUser() != null){

@@ -2,26 +2,27 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="#FAF9F6">
+    android:background="#ffcb5d">
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="14dp">
+        android:padding="11dp">
+
 
         <ImageView
-            android:layout_width="107dp"
-            android:layout_height="21dp"
-            android:layout_centerVertical="true"
+            android:layout_width="162dp"
+            android:layout_height="32dp"
 
-            android:src="@drawable/social" />
+            android:src="@drawable/socialfinal" />
 
         <ImageView
+            android:id="@+id/addphoto"
             android:layout_width="54dp"
             android:layout_height="31dp"
-            android:src="@drawable/story"
-            android:id="@+id/addphoto"
+            android:layout_centerVertical="true"
             android:layout_toLeftOf="@+id/sendwe"
-            android:layout_centerVertical="true"/>
+            android:src="@drawable/story" />
 
         <ImageView
             android:id="@+id/sendwe"
